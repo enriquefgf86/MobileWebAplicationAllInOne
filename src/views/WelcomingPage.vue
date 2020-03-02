@@ -38,7 +38,8 @@ export default {
   name: "WelcomingPage",
   computed: {
     ...mapGetters(["getUser"]),
-user(){ console.log(this.$store.getters.getUser);
+user(){ 
+  // console.log(this.$store.getters.getUser);
   return this.$store.getters.getUser
  
 }
