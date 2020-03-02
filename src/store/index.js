@@ -66,12 +66,12 @@ export default new Vuex.Store({
           return response.json();
         })
         .then(test => {
-          console.log(test._embedded.events);
+          // console.log(test._embedded.events);
           commit("settingLoader", false);
           commit("settingEvents", test._embedded.events);
         })
         .catch(error => {
-          console.log(error);
+          error;//console.log omitido por problemas de posteo en netlify
           commit("settingLoader", false);
         });
     },
@@ -89,14 +89,14 @@ export default new Vuex.Store({
           return response.json();
         })
         .then(test => {
-          console.log(test);
+          // console.log(test);
           commit("settingLoader", false);
 
           dispatch("fetchCurrentLocation", test.location);
         })
         .catch(err => {
           commit("settingLoader", false);
-          console.log(err);
+          err;//console.log omitido por problemas de posteo en netlify
         });
     },
     fetchCurrentLocation({ commit, dispatch }, payload) {
@@ -116,7 +116,7 @@ export default new Vuex.Store({
           return response.json();
         })
         .then(path => {
-          console.log(path.results[0].address_components[0].short_name);
+          // console.log(path.results[0].address_components[0].short_name);
           commit(
             "settingCountryCode",
             path.results[0].address_components[0].short_name
@@ -125,13 +125,13 @@ export default new Vuex.Store({
           commit("settingLoader", false);
         })
         .catch(error => {
-          console.log(error);
+          error;//console.log omitido por problemas de posteo en netlify
           commit("settingLoader", false);
         });
     },
 
     settingCountryCode({ commit }, payload) {
-      console.log(payload);
+      // console.log(payload);
       commit("settingCountryCode", payload);
     },
     signUserUp({ commit }, payload) {
@@ -142,7 +142,7 @@ export default new Vuex.Store({
         .createUserWithEmailAndPassword(payload.email, payload.password)
         .then(() => {
           let user = firebase.auth().currentUser;
-          console.log(user);
+          // console.log(user);
           user
             .updateProfile({
               displayName: payload.name
@@ -159,7 +159,7 @@ export default new Vuex.Store({
             });
         })
         .catch(error => {
-          console.log(error);
+          error;//console.log omitido por problemas de posteo en netlify
           commit("settingLoader", false);
         });
     },
@@ -175,19 +175,19 @@ export default new Vuex.Store({
             email: user.user.email,
             name: user.user.displayName
           };
-          console.log(User);
+          // console.log(User);
           commit("settingUserIn", User);
           commit("settingLoader", false);
         })
         .catch(error => {
-          console.log(error);
+          error;//console.log omitido por problemas de posteo en netlify
           commit("settingLoader", false);
         });
     },
     keepUserSigned({ commit }) {
       firebase.auth().onAuthStateChanged(user => {
         if (user) {
-          console.log(user);
+          // console.log(user);
 
           const newUser = {
             id: user.uid,
@@ -197,7 +197,7 @@ export default new Vuex.Store({
 
           commit("settingUserIn", newUser);
         } else {
-          console.log("No user");
+          alert("No user");
           this.user = null;
         }
       });
@@ -208,7 +208,7 @@ export default new Vuex.Store({
         .signOut()
         .then(() => {
           commit("settingUserIn", null);
-          console.log(firebase);
+          // console.log(firebase);
           // this.$router.push('/welcome')
         });
     }

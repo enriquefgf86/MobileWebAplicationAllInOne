@@ -82,7 +82,7 @@ export default {
     //      containerX.scrollTop=scrollHeight;
     // },
     sendMsg() {
-      console.log(firebase);
+      // console.log(firebase);
       firebase
         .database()
         .ref()
@@ -95,7 +95,7 @@ export default {
         .database()
         .ref("/chats/")
         .on("value", snapshot => {
-          console.log(snapshot.val());
+          // console.log(snapshot.val());
           this.messageBox = snapshot.val();
         });
     }
@@ -104,7 +104,7 @@ export default {
     ...mapGetters(["getUser"]),
 
     authUser() {
-      console.log(this.getUser);
+      // console.log(this.getUser);
       return this.getUser;
     }
   },

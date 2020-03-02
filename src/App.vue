@@ -150,7 +150,8 @@ export default {
         // {title:'Search Results', icon:'mdi-cloud-search-outline',link:'/results'},
         // {title:'Welcoming Page', icon:'mdi-wechat',link:'/welcome'},
       ];
-      if (this.user != null && this.user != undefined) {console.log(this.user);
+      if (this.user != null && this.user != undefined) {
+        // console.log(this.user);
         return items;
         
       }

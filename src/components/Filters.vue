@@ -94,7 +94,7 @@ export default {
   },
   watch: {
     getCountryCode() {
-      console.log(this.getCountryCode)
+      // console.log(this.getCountryCode)
       this.fetchAllEvents();
     }
   }

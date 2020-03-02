@@ -87,7 +87,7 @@ export default {
 
     autoSearchFilter:function() {
       
-      console.log(this.Search);
+      // console.log(this.Search);
       if (this.Search != 0) {
         return this.getAllEvents.filter(selfSearch => {
           return (
@@ -126,7 +126,7 @@ export default {
           );
         });
       } else {
-        console.log(this.getAllEvents);
+        // console.log(this.getAllEvents);
         return Array.from(new Set(this.getAllEvents));
       }
     },
